@@ -1,0 +1,81 @@
+@font-face {
+  font-family: firaLight;
+  src: url(../font/FiraCode-Light.ttf);
+}
+
+* {
+  margin: 0;
+  font-family: 'firaLight', 'Courier New', Courier, monospace;
+}
+
+h1,
+legend {
+  letter-spacing: 0.2rem;
+}
+
+html {
+  height: 100%;
+  text-align: center;
+  margin: 0 15rem;
+  background-color: rgb(43, 42, 51);
+  color: white;
+}
+
+dialog {
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%);
+  background-color: rgb(43, 42, 51);
+  color: white;
+  border-color: aqua;
+}
+
+div.main {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%, -50%);
+}
+
+div#noti {
+  border-right: 1rem;
+  width: 15rem;
+  border-color: aqua;
+  float: left;
+}
+
+.rule {
+  position: relative;
+  float: right;
+  width: 11rem;
+}
+
+/* button */
+#lay,
+#pc {
+  text-align: center;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  color: #fff;
+  font-size: 1rem;
+  border: 2px solid transparent;
+  border-color: #000;
+  color: #000;
+  background: transparent;
+  font-weight: bolder;
+  line-height: 30px;
+  transition: color .1s ease-in-out;
+}
+
+#lay:hover,
+#pc:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+dialog button {
+  background-color: transparent;
+  color: whitesmoke;
+}

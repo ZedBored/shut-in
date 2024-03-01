@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shut In</title>
+  <link rel="stylesheet" href="../css/game.css">
+</head>
+
+<body>
+
+  <h1>Shut In</h1>
+
+  <!-----notification---->
+  <div id="noti"></div>
+  <!-----notification---->
+
+  <div class="main">
+    <button type="button" id="lay">Lay on bed</button>
+    <dialog class="bed">
+      <button type="button" id="nap">Take a quick nap</button>
+      <br><br>
+      <button type="button" id="sleep">Sleep</button>
+      <br><br>
+      <button type="button" id="getof">Get of the bed</button>
+    </dialog>
+    <!--------------------------pc------------------------->
+    <button type="button" id="pc">Open PC</button>
+    <dialog class="pc">
+      <button type="button" id="food">Order food</button>
+      <br><br>
+      <button type="button" id="earn">Earn money</button>
+      <br><br>
+      <button type="button" id="turnof">Turn off the PC</button>
+    </dialog>
+  </div>
+
+  <!--------------------------food------------------------->
+  <dialog class="food">
+    <button type="button" id="close2">&times;back&times;</button>
+    <br><br>
+    <button type="button" id="small">Small Meal = $10</button>
+    <br><br>
+    <button type="button" id="normal">Normal Meal = $20</button>
+    <br><br>
+    <button type="button" id="large">large Meal = $40</button>
+  </dialog>
+
+  <!--------------------------earn------------------------->
+  <dialog class="earn">
+    <button type="button" id="close3">&times;back&times;</button>
+    <br><br>
+    <button type="button" id="lot">Lottery - $10 per ticket</button>
+    <br><br>
+    <button type="button" id="sur">Survey</button>
+    <br><br>
+    <button type="button" id="free">Freelance</button>
+  </dialog>
+
+  <!--------------------------box------------------------->
+  <fieldset class="rule">
+    <!--------------------------clock------------------------->
+    <fieldset class="clock">
+      <legend>Time</legend>
+      <span id="hr">07 :</span>
+      <span id="min">00</span>
+      <p id="days">Days passed: 0</p>
+      <p id="month"></p>
+    </fieldset>
+    <br>
+    <!--------------------------Stats------------------------->
+    <fieldset class="stats">
+      <legend>STATS</legend>
+      <p id="mon">Money: $100</p>
+      <p id="hun">Hunger: 100%</p>
+      <p id="sle">Sleep: 100%</p>
+    </fieldset>
+  </fieldset>
+
+  <script src="../js/game.js"></script>
+</body>
+
+</html>
