@@ -20,15 +20,15 @@ let death = 5;
 let bad;
 
 let name = "Player";
-// name = prompt(
-//   "What is your name?(Please enter a name less than 30 Characters)"
-// );
+name = prompt(
+  "What is your name?(Please enter a name less than 30 Characters)"
+);
 
-// while (name == null || name == "" || name.length > 30) {
-//   name = prompt(
-//     "What is your name?(Please enter a name less than 30 Characters)"
-//   );
-// }
+while (name == null || name == "" || name.length > 30) {
+  name = prompt(
+    "What is your name?(Please enter a name less than 30 Characters)"
+  );
+}
 
 // Creating a notification that the user has logged in
 let p = document.createElement("span");
@@ -339,7 +339,6 @@ function update() {
 // end
 document.body.addEventListener("click", () => {
   bad = Math.floor(Math.random() * death);
-  console.log(bad, death);
   if (sleep <= 20) {
     let p = document.createElement("p");
     timeout(p);
