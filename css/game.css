@@ -79,3 +79,9 @@ dialog button {
   background-color: transparent;
   color: whitesmoke;
 }
+
+#stylish a {
+  background-color: black;
+  text-decoration-line: none;
+  color: aqua;
+}

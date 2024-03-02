@@ -15,18 +15,20 @@ let surveyCounter = 0;
 let lotteryCounter = 0;
 let freelanceCounter = 0;
 
-let death = 0;
+let death = 5;
+
+let bad;
 
 let name = "Player";
-name = prompt(
-  "What is your name?(Please enter a name less than 30 Characters)"
-);
+// name = prompt(
+//   "What is your name?(Please enter a name less than 30 Characters)"
+// );
 
-while (name == null || name == "" || name.length > 30) {
-  name = prompt(
-    "What is your name?(Please enter a name less than 30 Characters)"
-  );
-}
+// while (name == null || name == "" || name.length > 30) {
+//   name = prompt(
+//     "What is your name?(Please enter a name less than 30 Characters)"
+//   );
+// }
 
 // Creating a notification that the user has logged in
 let p = document.createElement("span");
@@ -35,7 +37,7 @@ noti.appendChild(p);
 timeout(p);
 
 // Updating the STATS
-setInterval(update, 1000);
+const interval = setInterval(update, 1000);
 
 // Open & Close all the dialog fields
 //                      bed
@@ -214,7 +216,6 @@ document.getElementById("lot").addEventListener("click", () => {
     let x = getrand(1, 10);
     let y = getrand(1, 10);
     let z = getrand(1, 10);
-    console.log(x, y, z);
     money -= 8;
     if ((x == y) == z) {
       p.innerText = `${name} won a lottery and got $${x * 1000}`;
@@ -232,6 +233,7 @@ document.getElementById("lot").addEventListener("click", () => {
     p.innerText = `${name} can only buy ticket every 24 hours.`;
     p.style.color = "red";
   }
+  noti.insertAdjacentElement("afterbegin", p);
 });
 //                             survey
 document.getElementById("sur").addEventListener("click", () => {
@@ -322,39 +324,68 @@ function update() {
   document.getElementById("hun").innerText = `Hunger: ${Math.ceil(hunger)}%`;
   document.getElementById("sle").innerText = `Sleep: ${Math.ceil(sleep)}%`;
   document.getElementById("mon").innerText = `Money: $${money}`;
+  if (money >= 100000) {
+    hunger = 100;
+    sleep = 100;
+    clearInterval(interval);
+    goodEnding();
+    let p = document.createElement("p");
+    p.innerText = `THE END`;
+    p.style.color = "red";
+    noti.insertAdjacentElement("afterbegin", p);
+  }
 }
 
 // end
 document.body.addEventListener("click", () => {
+  bad = Math.floor(Math.random() * death);
+  console.log(bad, death);
   if (sleep <= 20) {
     let p = document.createElement("p");
     timeout(p);
-    if (sleep <= 20) {
+    if (sleep <= 20 && sleep > 10) {
       p.innerText = `${name} is feeling sleepy and having a hard time staying awake.`;
-    } else if (sleep <= 10) {
+    } else if (sleep <= 10 && sleep > 0) {
       let p = document.createElement("p");
       p.innerText = `${name} is feeling sleepy and can pass out anytime`;
     } else if (sleep <= 0) {
-      hr += 9;
-      sleep += 20;
-      hunger -= 10;
-      death += 2;
-      let p = document.createElement("p");
-      p.innerText = `${name} passed out`;
+      if (bad == 0) {
+        badEnding();
+        p.innerText = `THE END`;
+      } else {
+        hr += 9;
+        sleep += 40;
+        death -= 1;
+        p.innerText = `${name} passed out. He woke up on his bed not able to remember what happened. he says "Maybe I saw my dad there, maybe he carried me? MAYBE..."`;
+      }
     }
     p.style.color = "red";
     noti.insertAdjacentElement("afterbegin", p);
   }
   if (hunger <= 20) {
     let p = document.createElement("p");
-    if (hunger <= 20) {
+    if (hunger <= 20 && hunger > 10) {
       sleep -= 2;
       p.innerText = `${name} is feeling a bit dizzy and his stomach is gurgling, better to eat something.`;
-    } else if (hunger <= 10) {
+    } else if (hunger <= 10 && hunger > 0) {
       sleep -= 4;
       p.innerText = `${name}'s stomach is gurgling more louder than before and with pain, better to eat something or you can go wild.`;
     } else if (hunger <= 0) {
-      p.innerText = `${name} passed out suddenly and saw a big meal infront of him, he ate it like there was no tommorow.`;
+      if (bad <= 0) {
+        hunger = 100;
+        sleep = 100;
+        clearInterval(interval);
+        document.getElementById("data").innerHTML = `You survived ${days} days. 
+        You should have earned more ${100000 - money} dollars, 
+        maybe something would have happened...`;
+        badEnding();
+        p.innerText = `THE END`;
+      } else {
+        hunger += 40;
+        sleep += 10;
+        death -= 2;
+        p.innerText = `${name} passed out suddenly and saw a big meal infront of him, he ate it like there was no tommorow. He says "Maybe I saw my mom, maybe she gave me the food? MAYBE..."`;
+      }
     }
     p.style.color = "red";
     noti.insertAdjacentElement("afterbegin", p);
@@ -369,4 +400,14 @@ function timeout(p) {
 
 function getrand(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function badEnding() {
+  console.log("The End bad");
+  document.querySelector(".badEnd").open = true;
+}
+
+function goodEnding() {
+  console.log("The End good");
+  document.querySelector(".goodEnd").open = true;
 }
