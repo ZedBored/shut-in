@@ -6,5 +6,5 @@ Survive till.... something happens.
 ## Link to play the game
 
 ```
-https://genzene.github.io/Shut-In/
+https://genzene.github.io/shut-in/
 ```
