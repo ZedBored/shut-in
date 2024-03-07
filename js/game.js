@@ -2,6 +2,9 @@ const noti = document.getElementById("noti");
 let diapc = document.querySelector(".pc");
 let lay = document.getElementById("lay");
 let pc = document.getElementById("pc");
+const html = document.querySelector("html");
+
+mode = 0;
 
 let hr = 7;
 let min = 0;
@@ -18,16 +21,27 @@ let freelanceCounter = 0;
 let death = 5;
 
 let bad;
+// dark mode/ light mode
+document.getElementById("mode").addEventListener("click", () => {
+  if (mode == 0) {
+    html.style.filter = "invert(95%) hue-rotate(180deg)";
+    mode = 1;
+    document.getElementById("mode").innerHTML = "DARK MODE";
+  } else {
+    html.style.filter = "invert(0)";
+    mode = 0;
+    document.getElementById("mode").innerHTML = "LIGHT MODE";
+  }
+});
 
-let name = "Player";
+// name assignment
+let name;
 name = prompt(
   "What is your name?(Please enter a name less than 30 Characters)"
 );
 
-while (name == null || name == "" || name.length > 30) {
-  name = prompt(
-    "What is your name?(Please enter a name less than 30 Characters)"
-  );
+if (name == null || name == "" || name.length > 30) {
+  name = "Player";
 }
 
 // Creating a notification that the user has logged in
