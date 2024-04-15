@@ -6,5 +6,5 @@ Survive till.... something happens.
 ## Link to play the game
 
 ```
-https://ZedCord.github.io/shut-in/
+https://ZedBored.github.io/shut-in/
 ```
